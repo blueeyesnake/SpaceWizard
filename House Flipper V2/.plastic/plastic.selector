@@ -1,4 +1,0 @@
-repository "House Flipper V2@csc4351@cloud"
-  path "/"
-    br "/main"
-    co "/main"
