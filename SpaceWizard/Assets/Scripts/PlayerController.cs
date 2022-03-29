@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
             //just for debugging where the player should be looking in the scene
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
-            transform.LookAt(pointToLook);
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
     //instead of once per frame, fixed update happens at a set time
