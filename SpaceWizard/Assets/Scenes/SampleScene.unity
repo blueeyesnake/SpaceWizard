@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1133,6 +1133,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1119250606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1119250607}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1119250607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119250606}
+  m_LocalRotation: {x: -0.51857454, y: -0.29664767, z: 0.39818734, w: -0.69608015}
+  m_LocalPosition: {x: -0.000015258789, y: -131.70018, z: 0.00016474724}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1636436845}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 73.372, y: 0, z: 300.457}
 --- !u!1001 &1226101812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1344,6 +1374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  theStaff: {fileID: 1636436846}
 --- !u!54 &1334588024
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1606,6 +1637,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1636436844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1587177246678718, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+  m_PrefabInstance: {fileID: 1226101812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1636436845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4697918775314360, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+  m_PrefabInstance: {fileID: 1226101812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1636436846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636436844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cdcbfbe4449344fb471045b5fe636e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFiring: 0
+  fireball: {fileID: 5912812532796009246, guid: 47d8e87f3e84d024e8ba9ac7624959fa, type: 3}
+  fireballSpeed: 5
+  timeBetweenShots: 0.1
+  firePoint: {fileID: 1119250607}
 --- !u!1 &1698051198
 GameObject:
   m_ObjectHideFlags: 0
