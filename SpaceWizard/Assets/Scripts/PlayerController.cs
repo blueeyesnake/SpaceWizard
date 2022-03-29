@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVelocity;
     // Start is called before the first frame update
 
+    public StaffController theStaff;
+
     private Camera mainCamera;
     void Start()
     {
@@ -38,6 +40,16 @@ public class PlayerController : MonoBehaviour
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+        }
+        //GetMouseButtonDown(0) references left click on mouse, different numbers reference different clicks
+        if(Input.GetMouseButtonDown(0))
+        {
+            theStaff.isFiring = true;
+        }
+        //GetMouseButtonUp checks if the button specified is no longer clicking
+        if(Input.GetMouseButtonUp(0))
+        {
+            theStaff.isFiring = false;
         }
     }
     //instead of once per frame, fixed update happens at a set time
