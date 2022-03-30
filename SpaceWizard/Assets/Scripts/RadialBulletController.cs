@@ -3,7 +3,7 @@ using UnityEngine;
 public class RadialBulletController : MonoBehaviour
 {
     [Header("Projectile Settings")]
-    public int numberOfProjectiles;             // Number of projectiles to shoot.
+    public int maxNumberOfProjectiles;             // Number of projectiles to shoot.
     public int minNumberOfProjectiles;
     public float projectileSpeed;               // Speed of the projectile.
     public GameObject ProjectilePrefab;         // Prefab to spawn.
@@ -23,7 +23,7 @@ public class RadialBulletController : MonoBehaviour
         }
         else
         {   startPoint = transform.position;
-            SpawnProjectile(Mathf.RoundToInt(Random.Range(minNumberOfProjectiles, numberOfProjectiles)));
+            SpawnProjectile(Mathf.RoundToInt(Random.Range(minNumberOfProjectiles, maxNumberOfProjectiles)));
             delay = Random.Range(1, 3);
             Debug.Log("Next Attack in: " + delay + " Seconds");
         }
