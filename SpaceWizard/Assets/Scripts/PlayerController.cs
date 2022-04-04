@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     private Camera mainCamera;
 
+    //stuff for movement
+    public float pushForce = 10f;
+    public float turnForce = 45f;
+
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
@@ -26,8 +30,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-        moveVelocity = moveInput * moveSpeed;
+        if(Input.GetKey(KeyCode.W) == true)
+        {
+            myRigidBody.AddForce(this.transform.forward * pushForce * Time.deltaTime, ForceMode.VelocityChange);
+
+        }
+
         //makes character look at mouse
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         //makes new plane at default position
@@ -54,8 +62,5 @@ public class PlayerController : MonoBehaviour
         }
     }
     //instead of once per frame, fixed update happens at a set time
-    private void FixedUpdate()
-    {
-        myRigidBody.velocity = moveVelocity;
-    }
+    
 }
