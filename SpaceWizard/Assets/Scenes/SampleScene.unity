@@ -2213,7 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFiring: 0
-  fireball: {fileID: 5912812532796009246, guid: 47d8e87f3e84d024e8ba9ac7624959fa, type: 3}
+  fireball: {fileID: 2534011553027766623, guid: 0203a37b0f047a74794f252f4783d6b2, type: 3}
   fireballSpeed: 5
   timeBetweenShots: 0.1
   firePoint: {fileID: 1119250607}
