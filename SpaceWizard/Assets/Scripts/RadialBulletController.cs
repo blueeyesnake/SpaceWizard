@@ -13,10 +13,26 @@ public class RadialBulletController : MonoBehaviour
     private const float radius = 1F;            // Help us find the move direction.
     private float timeRemaining = 3;
 
-   
+    //enemy health objects
+    public int maxHealth = 100;
+    public int currentHealth;
+    public healthBar healthBar;
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //replace key down with actual damage detection
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(4);
+        }
+
+
         if (delay > 0)
         {
             delay -= Time.deltaTime;
@@ -56,4 +72,11 @@ public class RadialBulletController : MonoBehaviour
             angle += angleStep;
         }
     }
+
+    //function for damaging enemy
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }    
 }
