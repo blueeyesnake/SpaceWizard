@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public StaffController theStaff;
 
     private Camera mainCamera;
+
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
