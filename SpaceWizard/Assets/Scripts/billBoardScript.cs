@@ -12,6 +12,6 @@ public class billBoardScript : MonoBehaviour
     //allows the camera to move, and then the healthbar to point towards it in that order
     void LateUpdate()
     {
-        transform.LookAt(transform.position + cam.position);
+        //transform.LookAt(transform.position + cam.position);
     }
 }

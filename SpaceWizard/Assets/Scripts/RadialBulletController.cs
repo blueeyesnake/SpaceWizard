@@ -17,8 +17,17 @@ public class RadialBulletController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public healthBar healthBar;
+
+    //for enemy movement
+    private Rigidbody myRB;
+    public float moveSpeed;
+    public PlayerController thePlayer;
+
     private void Start()
     {
+        myRB = GetComponent<Rigidbody>(); //gets rigidbody attached to enemy
+        thePlayer = FindObjectOfType<PlayerController>(); //enemy automatically knows where player is
+
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -26,10 +35,17 @@ public class RadialBulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //enemy moves towards player
+        transform.LookAt(new Vector3(thePlayer.transform.position.x, transform.position.y, thePlayer.transform.position.z));
         //replace key down with actual damage detection
         if(Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(4);
+        }
+
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
         }
 
 
@@ -44,6 +60,11 @@ public class RadialBulletController : MonoBehaviour
             Debug.Log("Next Attack in: " + delay + " Seconds");
         }
  
+    }
+
+    private void FixedUpdate()
+    {
+        myRB.velocity = (transform.forward * moveSpeed);
     }
 
     // Spawns x number of projectiles.
@@ -74,7 +95,7 @@ public class RadialBulletController : MonoBehaviour
     }
 
     //function for damaging enemy
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
