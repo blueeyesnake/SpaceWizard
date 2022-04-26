@@ -9695,7 +9695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88bfd6a632a70b343a3df8aef33dad48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireballSpeed: 0
+  fireballSpeed: 1
+  lifeTime: 3
+  damageToGive: 1
 --- !u!1 &5099559516360549319
 GameObject:
   m_ObjectHideFlags: 0
