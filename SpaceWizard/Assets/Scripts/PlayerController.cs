@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        print(Screen.currentResolution);
+
+
         myRigidBody = GetComponent<Rigidbody>();
         //finds camera in world
         mainCamera = FindObjectOfType<Camera>();
