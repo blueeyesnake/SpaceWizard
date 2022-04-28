@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public manaBar playerMana;
+    public float maxMana;
+    public float currentMana;
+
     //stuff for movement
     public float pushForce = 10f;
     public float turnForce = 45f;
@@ -31,6 +35,9 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = maxHealth;
         playerHealth.SetMaxHealth(maxHealth);
+
+        currentMana = maxMana;
+        playerMana.SetMaxMana(maxMana);
 
 
 
@@ -78,12 +85,14 @@ public class PlayerController : MonoBehaviour
             myRigidBody.AddForce(this.transform.forward * pushForce * Time.deltaTime, ForceMode.VelocityChange);
 
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
+        if((Input.GetKey(KeyCode.Mouse0) != true) && currentMana < 100f && (Input.GetKey(KeyCode.Mouse1) != true))
         {
-            TakeDamage(20);
+            GainMana(0.1f);
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            LoseMana(40);
         }    
-
         //makes character look at mouse
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         //makes new plane at default position
@@ -115,6 +124,18 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         playerHealth.SetHealth(currentHealth);
     }
+
+    public void LoseMana(float manaLoss)
+    {
+        currentMana -= manaLoss;
+        playerMana.SetMana(currentMana);
+    }
+
+    public void GainMana(float manaGain)
+    {
+        currentMana += manaGain;
+        playerMana.SetMana(currentMana);
+    }    
     //instead of once per frame, fixed update happens at a set time
 
 }
