@@ -5,9 +5,15 @@ using System.Timers;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float moveSpeed;
     private Rigidbody myRigidBody;
+    public GameObject AuraRed;
+    public GameObject AuraBlue;
+    public GameObject ShieldRed;
+    public GameObject ShieldBlue;
+    public bool redAura = true;
+    public bool blueAura = false;
+    
 
     private Vector3 moveInput;
     private Vector3 moveVelocity;
@@ -122,6 +128,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             theStaff.isFiring = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Q) == true)
+        {
+            if (redAura)
+            {
+                redAura = false;
+                AuraRed.SetActive(false);
+                ShieldRed.SetActive(false);
+                AuraBlue.SetActive(true);
+                ShieldBlue.SetActive(true);
+                blueAura = true;
+            }
+            else if (blueAura)
+            {
+                redAura = true;
+                AuraBlue.SetActive(false);
+                ShieldBlue.SetActive(false);
+                AuraRed.SetActive(true);
+                ShieldRed.SetActive(true);
+                blueAura = false;
+            }
+
         }
     }
 
