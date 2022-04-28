@@ -8,20 +8,26 @@ public class AreaSpellController : MonoBehaviour
     public GameObject Spell;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private GameObject sphere;
     // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(1)){
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray,out RaycastHit raycastHit)){
+                    // RaycastHit hit;
+            if(Physics.Raycast(ray,out RaycastHit raycastHit,100.0f)){
+                Debug.DrawRay(ray.origin, raycastHit.point);
+                if(raycastHit.collider == sphere.GetComponent<Collider>()){
+                    Debug.Log("true");
+                    Instantiate(Spell, raycastHit.point,Quaternion.identity);
+                }
                 
-                Instantiate(Spell, raycastHit.point,Quaternion.identity);
-                            Debug.Log(raycastHit.point.z);
+                            
 
             }
             Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            Debug.Log("true");
+            // Debug.Log("true");
         }
     }
 }
