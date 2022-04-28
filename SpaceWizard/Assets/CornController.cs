@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class CornController : MonoBehaviour
@@ -15,6 +16,8 @@ public class CornController : MonoBehaviour
     public float moveSpeed;
     public PlayerController thePlayer;
 
+    public int deathCount;
+
     public int damageToGive = 20;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class CornController : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        deathCount = 0;
     }
 
     // Update is called once per frame
@@ -33,8 +37,12 @@ public class CornController : MonoBehaviour
         if (currentHealth <= 0)
         {
 
-                                                             //Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 10);
-
+            //Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 10);
+            deathCount++;
+            if(deathCount >= 1)
+            {
+                SceneManager.LoadScene(3);
+            }
             Destroy(gameObject);
         }
 
@@ -59,5 +67,10 @@ public class CornController : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerController>().TakeDamage(damageToGive);
         }
+    }
+
+    public int getDeathCountCorn()
+    {
+        return deathCount;
     }
 }

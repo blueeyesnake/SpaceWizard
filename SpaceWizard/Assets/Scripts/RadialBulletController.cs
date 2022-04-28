@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RadialBulletController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class RadialBulletController : MonoBehaviour
     public float moveSpeed;
     public PlayerController thePlayer;
 
+    public int deathCount;
+
     private void Start()
     {
         myRB = GetComponent<Rigidbody>(); //gets rigidbody attached to enemy
@@ -31,6 +34,8 @@ public class RadialBulletController : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        deathCount = 0;
     }
 
     // Update is called once per frame
@@ -55,8 +60,13 @@ public class RadialBulletController : MonoBehaviour
              
             theEnemy.GetComponent<Animator>().Play("Death"); //doesnt work for some reason
             //Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 10);
-            
+            deathCount++;
+            if(deathCount >= 1)
+            {
+                SceneManager.LoadScene(2);
+            }
             Destroy(gameObject);
+            
         }
 
 
@@ -115,6 +125,9 @@ public class RadialBulletController : MonoBehaviour
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
-
+    public int getDeathCount()
+    {
+        return deathCount;
+    }    
    
 }

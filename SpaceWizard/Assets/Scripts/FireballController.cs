@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireballController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class FireballController : MonoBehaviour
     public float lifeTime;
 
     public int damageToGive;
+    public int killCount;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class FireballController : MonoBehaviour
             Destroy(gameObject);
         }
         
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -36,11 +40,13 @@ public class FireballController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<RadialBulletController>().TakeDamage(damageToGive);
+            
         }
 
         if (other.gameObject.tag == "EnemyCorn")
         {
             other.gameObject.GetComponent<CornController>().TakeDamage(damageToGive);
+            
         }
     }
 }

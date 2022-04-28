@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float pushForce = 10f;
     public float turnForce = 45f;
 
+    
     void Start()
     {
         print(Screen.currentResolution);
@@ -93,6 +94,11 @@ public class PlayerController : MonoBehaviour
         {
             LoseMana(40);
         }    
+
+        if(currentHealth <= 0)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
         //makes character look at mouse
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         //makes new plane at default position
