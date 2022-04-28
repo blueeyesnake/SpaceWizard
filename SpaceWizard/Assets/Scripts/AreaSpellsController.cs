@@ -9,6 +9,7 @@ public class AreaSpellsController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private GameObject sphere;
+    public AudioSource areaSound;
     // Update is called once per frame
     void Update()
     {
@@ -20,7 +21,7 @@ public class AreaSpellsController : MonoBehaviour
                  ray.origin = ray.GetPoint(100);
                 ray.direction = -ray.direction;
                 if(raycastHit.collider == sphere.GetComponent<Collider>()){
-                    Debug.Log("true");
+                    areaSound.Play();
                     Instantiate(Spell, raycastHit.point,Quaternion.identity);
                 }
                 

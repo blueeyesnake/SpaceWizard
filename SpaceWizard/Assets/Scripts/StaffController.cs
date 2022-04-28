@@ -9,7 +9,7 @@ public class StaffController : MonoBehaviour
     public FireballController fireball;
     public float fireballSpeed;
     public PlayerController player;
-
+    public AudioSource fireballSound;
     public float timeBetweenShots;
     private float shotCounter;
 
@@ -26,11 +26,13 @@ public class StaffController : MonoBehaviour
     {
         if(isFiring)
         {
+            
             shotCounter -= Time.deltaTime;
             if(shotCounter <= 0)
             {
                 shotCounter = timeBetweenShots;
                 FireballController newFireball = Instantiate(fireball, firePoint.position, firePoint.rotation) as FireballController;
+                fireballSound.Play();
                 player.gameObject.GetComponent<PlayerController>().LoseMana(manaToLose);
                 //sets fireballSpeed of the fireball object class equal to the fireballSpeed in this class
                 newFireball.fireballSpeed = fireballSpeed;
