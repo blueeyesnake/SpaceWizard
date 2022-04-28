@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject ShieldBlue;
     public bool redAura = true;
     public bool blueAura = false;
-    
+    public AudioSource switchAudio;
 
     private Vector3 moveInput;
     private Vector3 moveVelocity;
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
                 AuraBlue.SetActive(true);
                 ShieldBlue.SetActive(true);
                 blueAura = true;
+                switchAudio.Play();
             }
             else if (blueAura)
             {
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour
                 AuraRed.SetActive(true);
                 ShieldRed.SetActive(true);
                 blueAura = false;
+                switchAudio.Play();
             }
 
         }
