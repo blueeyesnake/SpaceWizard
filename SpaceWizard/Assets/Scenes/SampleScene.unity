@@ -342,6 +342,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: d2bfb7be713a1422bbeae716fc662f8b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9683c9574d7929040b46b8a56f0ee60b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2bfb7be713a1422bbeae716fc662f8b, type: 3}
 --- !u!1001 &302589776
@@ -1510,6 +1514,7 @@ MonoBehaviour:
   projectileSpeed: 10
   ProjectilePrefab: {fileID: 7783710631828885969, guid: a90c8f9b7e2f5874eaf2b2ce527bc1fd, type: 3}
   delay: 3
+  theEnemy: {fileID: 1007464745}
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 735239983}

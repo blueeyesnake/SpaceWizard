@@ -12,6 +12,7 @@ public class RadialBulletController : MonoBehaviour
     private Vector3 startPoint;                 // Starting position of the bullet.
     private const float radius = 1F;            // Help us find the move direction.
     private float timeRemaining = 3;
+    public GameObject theEnemy;
 
     //enemy health objects
     public int maxHealth = 100;
@@ -35,16 +36,26 @@ public class RadialBulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //theEnemy.GetComponent<Animator>().Play("Idle");
         //enemy moves towards player
-        transform.LookAt(new Vector3(thePlayer.transform.position.x, transform.position.y, thePlayer.transform.position.z));
-        //replace key down with actual damage detection
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (myRB.velocity.magnitude > 0)
         {
-            TakeDamage(4);
+            theEnemy.GetComponent<Animator>().Play("Walk");
         }
+        if (currentHealth > 0)
+        {
+            transform.LookAt(new Vector3(thePlayer.transform.position.x, transform.position.y, thePlayer.transform.position.z));
+        }
+            //transform.LookAt(new Vector3(thePlayer.transform.position.x, transform.position.y, thePlayer.transform.position.z));
+        //replace key down with actual damage detection
+        
 
         if(currentHealth <= 0)
         {
+             
+            theEnemy.GetComponent<Animator>().Play("Death"); //doesnt work for some reason
+            //Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + 10);
+            
             Destroy(gameObject);
         }
 
@@ -54,7 +65,9 @@ public class RadialBulletController : MonoBehaviour
             delay -= Time.deltaTime;
         }
         else
-        {   startPoint = transform.position;
+        {
+            theEnemy.GetComponent<Animator>().Play("Attack");
+            startPoint = transform.position;
             SpawnProjectile(Mathf.RoundToInt(Random.Range(minNumberOfProjectiles, maxNumberOfProjectiles)));
             delay = Random.Range(1, 3);
             Debug.Log("Next Attack in: " + delay + " Seconds");
@@ -65,6 +78,8 @@ public class RadialBulletController : MonoBehaviour
     private void FixedUpdate()
     {
         myRB.velocity = (transform.forward * moveSpeed);
+
+        //myRB.velocity = (transform.forward * moveSpeed);
     }
 
     // Spawns x number of projectiles.
@@ -99,5 +114,7 @@ public class RadialBulletController : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-    }    
+    }
+
+   
 }
