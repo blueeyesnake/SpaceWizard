@@ -37,5 +37,10 @@ public class FireballController : MonoBehaviour
         {
             other.gameObject.GetComponent<RadialBulletController>().TakeDamage(damageToGive);
         }
+
+        if (other.gameObject.tag == "EnemyCorn")
+        {
+            other.gameObject.GetComponent<CornController>().TakeDamage(damageToGive);
+        }
     }
 }
