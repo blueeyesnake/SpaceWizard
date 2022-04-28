@@ -15,8 +15,10 @@ public class AreaSpellsController : MonoBehaviour
         if(Input.GetMouseButtonDown(1)){
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                     // RaycastHit hit;
-            if(Physics.Raycast(ray,out RaycastHit raycastHit,100.0f)){
+            if(Physics.Raycast(ray,out RaycastHit raycastHit)){
                 Debug.DrawRay(ray.origin, raycastHit.point);
+                 ray.origin = ray.GetPoint(100);
+                ray.direction = -ray.direction;
                 if(raycastHit.collider == sphere.GetComponent<Collider>()){
                     Debug.Log("true");
                     Instantiate(Spell, raycastHit.point,Quaternion.identity);
