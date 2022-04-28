@@ -8,12 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed;
     private Rigidbody myRigidBody;
-    public GameObject AuraRed;
-    public GameObject AuraBlue;
-    public GameObject ShieldRed;
-    public GameObject ShieldBlue;
-    public bool redAura = true;
-    public bool blueAura = false;
+
     private Vector3 moveInput;
     private Vector3 moveVelocity;
     // Start is called before the first frame update
@@ -97,26 +92,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             LoseMana(40);
-        }  
-        if(Input.GetKeyDown(KeyCode.Q) == true){
-            if(redAura){
-                redAura = false;
-                AuraRed.SetActive(false);
-                ShieldRed.SetActive(false);
-                AuraBlue.SetActive(true);
-                ShieldBlue.SetActive(true);
-                blueAura = true;
-            }
-            else if(blueAura){
-                redAura = true;
-                AuraBlue.SetActive(false);
-                ShieldBlue.SetActive(false);
-                AuraRed.SetActive(true);
-                ShieldRed.SetActive(true);
-                blueAura = false;
-            }
-            
-        }  
+        }    
         //makes character look at mouse
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
         //makes new plane at default position

@@ -14,8 +14,6 @@ public class RadialBulletController : MonoBehaviour
     private float timeRemaining = 3;
     public GameObject theEnemy;
 
-    // public GameObject[] projectilePrefabs = new GameObject[2];
-    // Random rnd = new Random();
     //enemy health objects
     public int maxHealth = 100;
     public int currentHealth;
@@ -103,13 +101,7 @@ public class RadialBulletController : MonoBehaviour
             // Create game objects.
             GameObject tmpObj = Instantiate(ProjectilePrefab, startPoint, Quaternion.identity);
             tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(projectileMoveDirection.x, 0, projectileMoveDirection.y);
-            if(Random.Range(0,2) == 0){
-                tmpObj.GetComponent<Renderer>().material.color = Color.blue;
-            }
-            else{
-                tmpObj.GetComponent<Renderer>().material.color = Color.red;
-            }
-            
+
             // Destory the gameobject after 10 seconds.
             Destroy(tmpObj, 10F);
 
